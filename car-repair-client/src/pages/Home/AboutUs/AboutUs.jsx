@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <div>
       <div>
-        <div className="hero pt-0 pb-44 w-11/12 mx-auto font-inter ">
+        <div className="hero  pb-36 max-sm:pb-20 w-11/12 mx-auto font-inter ">
           <div className="hero-content flex-col items-start max-sm:items-center max-sm:justify-center max-sm:w-full  lg:flex-row">
             <div className="lg:w-1/2 lg:relative max-sm:flex max-sm:flex-col">
               <img

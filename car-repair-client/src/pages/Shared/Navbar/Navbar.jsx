@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
-import logoNav from "../../../assets/images/logocrbd.png";
+import logoNav from "../../../assets/icons/logocrbd.png";
 
 const Navbar = () => {
   const navLinks = (

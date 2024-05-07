@@ -1,4 +1,4 @@
-import footerLogo from "../../../assets/images/logocrbd.png";
+import footerLogo from "../../../assets/icons/logocrbd.png";
 import { FaFacebook, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa6";
 
 const Footer = () => {
