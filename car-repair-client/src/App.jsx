@@ -6,8 +6,10 @@ import Navbar from "./pages/Shared/Navbar/Navbar";
 function App() {
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <div className="max-w-7xl mx-auto">
+        <Navbar />
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

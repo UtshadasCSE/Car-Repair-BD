@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
+import logoNav from "../../../assets/images/logocrbd.png";
 
 const Navbar = () => {
   const navLinks = (
@@ -23,7 +24,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <nav className="container mx-auto py-3">
+      <nav className="py-3">
         <div className="navbar bg-base-100">
           <div className="navbar-start">
             <div className="dropdown">
@@ -54,7 +55,9 @@ const Navbar = () => {
                 {navLinks}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">daisyUI</a>
+            <Link to="/" className="">
+              <img className="w-24" src={logoNav} alt="" />
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navLinks}</ul>
@@ -81,7 +84,9 @@ const Navbar = () => {
                 <IoCartOutline className="text-lg" />
               </button>
             </div>
-            <a className="btn">Button</a>
+            <button className="btn btn-outline border-[#FF3811]  text-[#FF3811]">
+              Appointment
+            </button>
           </div>
         </div>
       </nav>

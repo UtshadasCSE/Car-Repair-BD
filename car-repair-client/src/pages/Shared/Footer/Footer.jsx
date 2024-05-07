@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div>
       <div>
-        <footer className="footer bg-[#151515] text-white font-inter p-20">
+        <footer className="footer bg-[#151515] text-white font-inter lg:p-20 p-11">
           <aside>
             <img
               className="w-28 bg-gray-300  rounded-md   "
