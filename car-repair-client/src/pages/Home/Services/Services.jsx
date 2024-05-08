@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
+// ..
+AOS.init();
 
 const Services = () => {
   const [services, setServices] = useState([]);
@@ -13,7 +17,10 @@ const Services = () => {
   console.log(services);
   return (
     <div>
-      <div className="font-inter flex flex-col gap-3 py-12 max-sm:py-3">
+      <div
+        data-aos="zoom-in-up"
+        className="font-inter flex flex-col gap-3 py-12 max-sm:py-3"
+      >
         <h4 className="text-[#FF3811] text-xl text-center font-semibold">
           Service
         </h4>
@@ -26,7 +33,10 @@ const Services = () => {
         </p>
       </div>
       {/* card  */}
-      <div className="grid grid-cols-3 max-sm:grid-cols-1 max-sm:w-4/5 max-sm:mx-auto gap-4 py-10 ">
+      <div
+        data-aos="flip-left"
+        className="grid grid-cols-3 max-sm:grid-cols-1 max-sm:w-4/5 max-sm:mx-auto gap-4 py-10 "
+      >
         {/* card 1  */}
         {services.map((service) => (
           <div

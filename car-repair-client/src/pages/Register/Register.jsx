@@ -4,20 +4,32 @@ import { FaGithub } from "react-icons/fa6";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
-const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+const Register = () => {
+  const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const handleLoginFormSubmit = (event) => {
+  const handleRegisterFormSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    const userName = form.userName.value;
     const email = form.email.value;
     const password = form.password.value;
-    loginUser(email, password)
+    const newUser = { userName, email, password };
+    createUser(email, password)
       .then((userCredential) => {
+        // Signed up
         const user = userCredential.user;
-        setUser();
+
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Your account successfully created!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(user);
+        form.reset();
         navigate("/");
       })
       .catch((error) => {
@@ -33,12 +45,28 @@ const Login = () => {
           <img src={loginImg} alt="" />
         </div>
         <div className="w-1/2 max-sm:w-full p-6 border-2 border-[#D0D0D0] rounded-lg">
-          <h2 className="text-3xl text-center font-semibold py-4">Login</h2>
+          <h2 className="text-3xl text-center font-semibold py-4">Register</h2>
           <form
-            onSubmit={handleLoginFormSubmit}
+            onSubmit={handleRegisterFormSubmit}
             action=""
             className="w-full flex flex-col gap-4"
           >
+            <label className="input input-bordered flex items-center gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                className="w-4 h-4 opacity-70"
+              >
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
+              </svg>
+              <input
+                name="userName"
+                type="text"
+                className="grow"
+                placeholder="Your name"
+              />
+            </label>
             <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +79,7 @@ const Login = () => {
               </svg>
               <input
                 name="email"
-                type="text"
+                type="email"
                 className="grow"
                 placeholder=" Your email"
               />
@@ -80,7 +108,7 @@ const Login = () => {
               type="submit"
               className=" w-full btn text-white bg-[#FF3811]"
             >
-              Log In
+              Register
             </button>
           </form>
           <div className=" py-5 text-center">
@@ -97,10 +125,10 @@ const Login = () => {
             </div>
           </div>
           <div className="flex justify-center py-4">
-            <Link to="/register">
-              Dont have an account?{" "}
+            <Link to="/login">
+              Already have an account?{" "}
               <span className="text-[#FF3811] font-semibold cursor-pointer hover:underline">
-                Register
+                Login
               </span>
             </Link>
           </div>
@@ -110,4 +138,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

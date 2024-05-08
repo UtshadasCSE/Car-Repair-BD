@@ -1,13 +1,23 @@
 import about1 from "../../../assets/images/about_us/person.jpg";
 import about2 from "../../../assets/images/about_us/parts.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
+// ..
+AOS.init();
 
 const AboutUs = () => {
   return (
     <div>
       <div>
-        <div className="hero  pb-36 max-sm:pb-20 w-11/12 mx-auto font-inter ">
+        <div
+          data-aos="fade-down"
+          className="hero  pb-36 max-sm:pb-20 w-11/12 mx-auto font-inter "
+        >
           <div className="hero-content flex-col items-start max-sm:items-center max-sm:justify-center max-sm:w-full  lg:flex-row">
-            <div className="lg:w-1/2 lg:relative max-sm:flex max-sm:flex-col">
+            <div
+              data-aos="fade-left"
+              className="lg:w-1/2 lg:relative max-sm:flex max-sm:flex-col"
+            >
               <img
                 src={about1}
                 className="w-4/5 max-sm:w-4/5 h-96 max-sm:h-full rounded-lg shadow-2xl"

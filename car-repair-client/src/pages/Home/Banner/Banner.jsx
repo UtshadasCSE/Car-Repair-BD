@@ -4,11 +4,19 @@ import img3 from "../../../assets/images/banner/3.jpg";
 import img4 from "../../../assets/images/banner/4.jpg";
 import img5 from "../../../assets/images/banner/5.jpg";
 import img6 from "../../../assets/images/banner/6.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
+// ..
+AOS.init();
+
 const Banner = () => {
   return (
     <div>
-      <div className="max-sm:w-11/12 max-sm:mx-auto md:w-11/12 md:mx-auto">
-        <div className="carousel w-full lg:py-4 max-sm:h-[75vh]">
+      <div
+        data-aos="fade-up"
+        className="max-sm:w-11/12 max-sm:mx-auto md:w-11/12 md:mx-auto"
+      >
+        <div className="carousel w-full lg:py-4 max-sm:h-[90vh]">
           <div id="slide1" className="carousel-item relative w-full ">
             <img src={img1} className="w-full h-3/4  rounded-md" />
             <div className="absolute flex items-center  h-3/4 left-0  top-0 gap-4 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0.00)] rounded-md">
