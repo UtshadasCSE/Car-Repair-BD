@@ -1,12 +1,14 @@
 import loginImg from "../../assets/images/login/login.svg";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
+
 import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
   const { loginUser } = useContext(AuthContext);
+  const location = useLocation();
   const navigate = useNavigate();
   const handleLoginFormSubmit = (event) => {
     event.preventDefault();
@@ -16,9 +18,8 @@ const Login = () => {
     loginUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setUser();
         console.log(user);
-        navigate("/");
+        navigate(location.state ? location.state : "/");
       })
       .catch((error) => {
         const errorCode = error.code;

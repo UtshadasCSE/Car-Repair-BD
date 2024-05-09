@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import { FaArrowCircleRight } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 // ..
 AOS.init();
 
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("services.json")
+    fetch("http://localhost:4000/services")
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
@@ -58,9 +59,9 @@ const Services = () => {
               <p className="text-[#FF3811] text-lg font-medium">
                 Price:${service.price}
               </p>
-              <button>
-                <FaArrowCircleRight className="text-2xl text-[#FF3811]" />
-              </button>
+              <Link to={`/services/${service._id}`} className="">
+                <FaArrowCircleRight className="text-2xl text-[#FF3811] hover:text-3xl duration-700" />
+              </Link>
             </div>
           </div>
         ))}

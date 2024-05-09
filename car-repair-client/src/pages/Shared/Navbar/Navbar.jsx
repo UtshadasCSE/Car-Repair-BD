@@ -1,8 +1,21 @@
 import { Link, NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import logoNav from "../../../assets/icons/logocrbd.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logoutUser } = useContext(AuthContext);
+
+  const handleLogoutBtn = () => {
+    logoutUser()
+      .then(() => {
+        alert("Ok");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const navLinks = (
     <>
       <li>
@@ -56,14 +69,14 @@ const Navbar = () => {
               </ul>
             </div>
             <Link to="/" className="">
-              <img className="w-24" src={logoNav} alt="" />
+              <img className="w-24 max-sm:w-12" src={logoNav} alt="" />
             </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{navLinks}</ul>
           </div>
-          <div className="navbar-end flex gap-3">
-            <button className="btn btn-ghost btn-circle">
+          <div className="navbar-end flex gap-3 ">
+            <button className="btn btn-ghost btn-circle max-sm:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -79,12 +92,30 @@ const Navbar = () => {
                 />
               </svg>
             </button>
-            <div>
+            <div className="max-sm:hidden">
               <button className="btn btn-ghost btn-circle">
                 <IoCartOutline className="text-lg" />
               </button>
             </div>
-            <button className="btn btn-outline border-[#FF3811]  text-[#FF3811]">
+            {user ? (
+              <>
+                {" "}
+                <button
+                  onClick={handleLogoutBtn}
+                  className="btn   text-[#FFFF] bg-slate-950 rounded-full px-6 max-sm:text-sm"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="btn   text-[#FFFF] bg-slate-950 rounded-full px-6 max-sm:text-sm"
+              >
+                Login
+              </Link>
+            )}
+            <button className="btn btn-outline border-[#FF3811]  text-[#FF3811] max-sm:text-sm">
               Appointment
             </button>
           </div>

@@ -7,6 +7,9 @@ export default {
       fontFamily: {
         inter: '"Inter", sans-serif',
       },
+      backgroundImage: {
+        serviceBanner: 'url("./src/assets/images/services/4.jpg")',
+      },
     },
   },
   plugins: [daisyui],
